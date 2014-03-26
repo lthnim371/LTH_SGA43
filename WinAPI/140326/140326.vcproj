@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="140318"
-	ProjectGUID="{65F34864-2F15-4C9E-AE7F-CF95509449B9}"
-	RootNamespace="My140318"
+	Name="140326"
+	ProjectGUID="{8E7513C8-6227-4A99-953A-5668C0E79D43}"
+	RootNamespace="My140326"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -62,7 +62,7 @@
 				Name="VCLinkerTool"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
-				SubSystem="1"
+				SubSystem="2"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -171,11 +171,11 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\140326 main.cpp"
+				RelativePath=".\winmain.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\winmain.cpp"
+				RelativePath=".\槛力.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -192,6 +192,18 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<File
+				RelativePath=".\bomb.h"
+				>
+			</File>
+			<File
+				RelativePath=".\circle.h"
+				>
+			</File>
+			<File
+				RelativePath=".\utility.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="府家胶 颇老"

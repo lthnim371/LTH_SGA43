@@ -4,6 +4,19 @@
 
 using namespace std;
 
+#pragma push_macro("new")
+void* operator (size_t size)
+{
+	void* ptr = malloc(size);
+
+	cout << "allocate : " << ptr << endl;
+	return ptr;
+}
+#pragma pop_macro("new")
+#pragma push_macro("delete")
+void operator delete(
+#pragma push_macro("delete")
+
 int main(void)
 {
 	list<int> test;
@@ -21,7 +34,10 @@ int main(void)
 
 	for(int i=0; i<10; ++i)
 	{
-		test.pop_front(i);
+		//동적할당한 만큼 해제가 된다
+		it = test.begin();
+		delete *it;
+		test.pop_front();
 	}
 
 	return 0;

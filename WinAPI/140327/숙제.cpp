@@ -101,7 +101,9 @@ _tWinMain(HINSTANCE hInst,
 
 Circle sample(Point(200,200), 50);
 std::list<Bomb*> Depot;
+typedef std::list<Bomb*>::iterator iter; //iterator을 typedef로 하여 쉽게 선언할 수 있도록 설정하였음
 Bomb* missile = NULL;
+const int maxMissile = 20; //미사일 제한 횟수
 
 void Invalidate(HWND hWnd, BOOL bErase = TRUE)
 {
@@ -118,6 +120,14 @@ LRESULT CALLBACK MyWndProc(HWND hWnd,UINT uMsg,WPARAM wParam,LPARAM lParam)
 	}
 	else if (uMsg == WM_DESTROY)
 	{
+		iter it;
+		for(it = Depot.begin(); it != Depot.end(); it++)
+		{
+			delete *it; //객체 메모리는 수동으로 해제해줘야 된다
+
+			//따로 pop을 안한 이유는 list도 일종의 클래스라 소멸자에서 알아서 지워준다.
+		}
+
 		::KillTimer(hWnd, 0);
 		::PostQuitMessage(0);
 		return 0;
@@ -145,20 +155,32 @@ LRESULT CALLBACK MyWndProc(HWND hWnd,UINT uMsg,WPARAM wParam,LPARAM lParam)
 	}
 	else if (uMsg == WM_TIMER) //WM_KEYDOWN : 키값은 하나만 들어오기때문에 하나밖에 실행됨
 	{
-		if(missile)
-		{
+		//if(missile)
+		//{
 			
 			//missile->move();
+
+			RECT rc;
+			::GetClientRect(hWnd, &rc);
 
 			std::list<Bomb*>::iterator it;
 			for(it = Depot.begin(); it != Depot.end(); it++)
 			{
-				(*it)->Draw(hdc);
+				(*it)->move();
+
+				if(!::PtInRect(&rc, (*it)->getCenter()))
+				{
+					delete *it;
+					it = Depot.erase(it); //인자값을 이터레이터로만 받음 //지우고 다음 녀석을 반환함
+				}
+				else
+				{
+					it++;
+				}
 			}
 
 			/*
-			RECT rc;
-			::GetClientRect(hWnd, &rc);
+			
 
 			if(::PtInRect(&rc, missile->getCenter())) //어떤 점이 어떠한 네모안에 있냐 없냐 //첫번째인자는 전체화면 크기, 두번째 인자는 센터로 설정하면 될듯
 			{
@@ -168,7 +190,7 @@ LRESULT CALLBACK MyWndProc(HWND hWnd,UINT uMsg,WPARAM wParam,LPARAM lParam)
 			*/
 
 			Invalidate(hWnd);
-		}
+		//}
 		//키보드 받는 함수 /메시지와 상관없이 키보드 값을 받음
 		// GetKeyState() //키보드 키 다 받음 // 배열로 넘겨줘야 함
 		// GetAsyncKeyState() //키를 눌렀니 라고 물어볼때 씀 //게임쪽에서 많이 사용
@@ -210,6 +232,13 @@ LRESULT CALLBACK MyWndProc(HWND hWnd,UINT uMsg,WPARAM wParam,LPARAM lParam)
 			//missile = new Bomb(sample.getCenter(), 5, sample.getAngle());
 
 			Bomb* pBomb = new Bomb(sample.getCenter(), 5, sample.getAngle());
+			if(Depot.size() == maxMissile)
+			{
+				//그냥 pop만 하면 좀비 메모리가 생기므로
+				std::list<Bomb*>::iterator it = Depot.begin();
+				delete *Depot.begin();
+				Depot.pop_front(); 
+			}
 			Depot.push_back(pBomb);
 		}
 	}

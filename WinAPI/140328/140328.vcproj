@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="140318"
-	ProjectGUID="{65F34864-2F15-4C9E-AE7F-CF95509449B9}"
-	RootNamespace="My140318"
+	Name="140328"
+	ProjectGUID="{20BA1E57-867A-4EED-ACE8-723CAC14A09F}"
+	RootNamespace="My140328"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -62,7 +62,7 @@
 				Name="VCLinkerTool"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
-				SubSystem="1"
+				SubSystem="2"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -171,40 +171,8 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\140326 main.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\140328  急积丛 main.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\140328 main.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\140328_1 main.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\winmain.cpp"
 				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
 			</File>
 		</Filter>
 		<Filter
@@ -212,6 +180,10 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<File
+				RelativePath=".\MainWindow.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="府家胶 颇老"

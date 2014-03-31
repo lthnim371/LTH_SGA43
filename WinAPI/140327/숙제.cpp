@@ -99,7 +99,7 @@ _tWinMain(HINSTANCE hInst,
 }
 
 
-Circle sample(Point(200,200), 50);
+Circle sample(Point(200,200), 20);
 std::list<Bomb*> Depot;
 typedef std::list<Bomb*>::iterator iter; //iterator을 typedef로 하여 쉽게 선언할 수 있도록 설정하였음
 Bomb* missile = NULL;
@@ -164,7 +164,7 @@ LRESULT CALLBACK MyWndProc(HWND hWnd,UINT uMsg,WPARAM wParam,LPARAM lParam)
 			::GetClientRect(hWnd, &rc);
 
 			std::list<Bomb*>::iterator it;
-			for(it = Depot.begin(); it != Depot.end(); it++)
+			for(it = Depot.begin(); it != Depot.end(); )
 			{
 				(*it)->move();
 
@@ -236,7 +236,8 @@ LRESULT CALLBACK MyWndProc(HWND hWnd,UINT uMsg,WPARAM wParam,LPARAM lParam)
 			{
 				//그냥 pop만 하면 좀비 메모리가 생기므로
 				std::list<Bomb*>::iterator it = Depot.begin();
-				delete *Depot.begin();
+				//delete *Depot.begin();
+				delete *it;
 				Depot.pop_front(); 
 			}
 			Depot.push_back(pBomb);

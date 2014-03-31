@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="140328"
-	ProjectGUID="{20BA1E57-867A-4EED-ACE8-723CAC14A09F}"
-	RootNamespace="My140328"
+	Name="MainWindow"
+	ProjectGUID="{D6F02219-3CF2-4340-9B8D-93B73CEE174F}"
+	RootNamespace="MainWindow"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -170,24 +170,12 @@
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
-			<File
-				RelativePath=".\winmain.cpp"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="헤더 파일"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
-			<File
-				RelativePath=".\ClockApp.h"
-				>
-			</File>
-			<File
-				RelativePath=".\MainWindow.h"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="리소스 파일"
